@@ -1,6 +1,10 @@
+package dsa_project;
+
 import java.util.*;
 
 public class contact_sorter {
+    static final Scanner sc = new Scanner(System.in);
+
     static String[] quickStrings(String[] s) {
         if (s.length <= 1)
             return s;
@@ -45,18 +49,16 @@ public class contact_sorter {
         return s;
     }
 
-    static String[] toArrStr(ArrayList<String> list) {
+    static String[] toArrStr(List list) {
         String[] res = new String[list.size()];
 
         for (int i = 0; i < list.size(); i++) {
-            res[i] = list.get(i);
+            res[i] = (String) list.get(i);
         }
         return res;
     }
 
-    static String[] bianrySearch(String[] s) {
-
-        Scanner sc = new Scanner(System.in);
+    static String[] binarySearch(String[] s) {
 
         System.out.print("#################################################################\n"
                 + "Choice 1: Search name.\n" + "Choice 2: Exit.\n" + "choice: ");
@@ -101,13 +103,10 @@ public class contact_sorter {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
-
         System.out.print("#################################################################\n"
                 + "Choice 1: To Enter name.\n" + "Choice 2: To Exit.\n" + "choice: ");
 
         int choice = sc.nextInt();
-
         String user_input = null;
 
         List name = new ArrayList();
@@ -118,10 +117,8 @@ public class contact_sorter {
                 System.out.print("enter name: ");
                 user_input = sc.next();
 
-                if (user_input != "exit" && user_input != " ") {
+                if (!user_input.equals("exit")) {
                     name.add(user_input);
-                } else {
-                    break;
                 }
             } else {
                 break;
@@ -132,11 +129,10 @@ public class contact_sorter {
         System.out.println(name);
 
         String s[] = new String[name.size()];
-
         for (int i = 0; i < name.size(); i++) {
             s[i] = (String) name.get(i);
         }
 
-        bianrySearch(quickStrings(s));
+        binarySearch(quickStrings(s));
     }
 }
