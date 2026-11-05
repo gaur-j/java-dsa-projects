@@ -4,14 +4,13 @@ import java.util.*;
 
 public class Text_toolkit {
     static String toArrStr(String s) {
-        s = s.replaceAll("[^a-zA-Z0-9]", "");
+        s = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
         int i = 0, j = s.length() - 1;
 
-        String copyStr = s.toLowerCase();
         boolean found = true;
 
         while (i < j) {
-            if (copyStr.charAt(i) != copyStr.charAt(j)) {
+            if (s.charAt(i) != s.charAt(j)) {
                 return ("The given String '%s' not Palindrome %b".formatted(s, !found));
             }
             i++;
@@ -21,7 +20,7 @@ public class Text_toolkit {
     }
 
     public static void main(String[] args) {
-        String s = "baddbc";
+        String s = "baddbcB";
         System.out.println(toArrStr(s) + "\n" + longestSubString(s));
     }
 
@@ -29,19 +28,18 @@ public class Text_toolkit {
         HashSet<Character> set = new HashSet<>();
         int i = 0, j = 0;
 
-        s = s.replaceAll("[^a-zA-Z0-9]", "");
+        s = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
         boolean found = true;
 
-        String copyStr = s.toLowerCase();
         int maxSize = 0;
 
-        while (j < copyStr.length()) {
-            while (set.contains(copyStr.charAt(j))) {
-                set.remove(copyStr.charAt(i));
+        while (j < s.length()) {
+            while (set.contains(s.charAt(j))) {
+                set.remove(s.charAt(i));
                 i++;
             }
 
-            set.add(copyStr.charAt(j));
+            set.add(s.charAt(j));
             maxSize = Math.max(maxSize, set.size());
             j++;
         }

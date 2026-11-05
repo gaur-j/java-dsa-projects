@@ -109,7 +109,7 @@ public class contact_sorter {
         int choice = sc.nextInt();
         String user_input = null;
 
-        List name = new ArrayList();
+        List<String> name = new ArrayList<>();
 
         while (true) {
 
